@@ -1,4 +1,4 @@
-#%%
+# %%
 """
 Multiply developer skill assessment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -17,7 +17,7 @@ import pandas as pd
 
 from batchers import create_batches
 
-#%%
+# %%
 
 datafile = "db_large.csv"
 datafile = "db.csv"
@@ -26,13 +26,13 @@ num_days = 7
 
 # for small db
 DAILY_BATCHES = 6
-MAX_BATCH_SIZE = 2 
+MAX_BATCH_SIZE = 2
 
 # for large db
 # DAILY_BATCHES = 40
 # MAX_BATCH_SIZE = 6
 
-#%%
+# %%
 curr_datetime = datetime.datetime.now()
 # Create batches for the next num_days days
 for i in range(num_days):
@@ -42,7 +42,7 @@ for i in range(num_days):
         MAX_BATCH_SIZE,
         product_frequency,
         curr_datetime,
-        i) # Add your create_batches args here
+        i)  # Add your create_batches args here
     curr_datetime += datetime.timedelta(days=1)
 
     # TODO: Save info about your batch to a file

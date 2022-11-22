@@ -8,6 +8,7 @@ import logging
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
+
 def create_batches(
     num_batches: int,
     max_batch_size: int,
@@ -43,7 +44,7 @@ def create_batches(
     max_update = product_frequency['Frequency_adjusted'].max()
 
     # Sort product by highest frequency in descending order so as to have all product that require the most update
-    # at the top, and optimize for empty batches at the end 
+    # at the top, and optimize for empty batches at the end
     product_frequency = product_frequency.sort_values(
         by="Frequency_adjusted", ascending=False)
 
@@ -65,8 +66,8 @@ def create_batches(
     for i in range(num_batches):
 
         batch = create_batch(batch_size, product_frequency)
-        
-        # We can check if the batch will be empty before running the batch, but that will 
+
+        # We can check if the batch will be empty before running the batch, but that will
         # take more computation than running the batch and checking if it is empty
         if len(batch) == 0:
             logging.info(
@@ -83,7 +84,7 @@ def create_batches(
     return batches, update_time
 
 
-def adjust_frequency(frequency, n_days):
+def adjust_frequency(frequency: float, n_days: int) -> int:
     """
     Adjust frequency for products with frequency < 1.
 
