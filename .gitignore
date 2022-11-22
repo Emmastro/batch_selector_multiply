@@ -1,0 +1,12 @@
+bin/*
+lib/*
+*pycache*
+pyvenv*
+*results/batches*
+*results/analysis*
+include/*
+*.db
+*.db-journal
+*profresults*
+batches
+env
