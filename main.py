@@ -12,7 +12,6 @@ outcome required in this task.
 
 import datetime
 import os
-import random
 import pandas as pd
 
 from batchers import create_batches
@@ -21,7 +20,7 @@ from batchers import create_batches
 
 datafile = "db_large.csv"
 # datafile = "db.csv"
-product_frequency = pd.read_csv(datafile)
+
 num_days = 7
 
 # for small db
@@ -40,19 +39,15 @@ for i in range(num_days):
     batches, update_time = create_batches(
         DAILY_BATCHES,
         MAX_BATCH_SIZE,
-        product_frequency,
-        curr_datetime,
-        i)  # Add your create_batches args here
+        datafile,
+        curr_datetime)  # Add your create_batches args here
     curr_datetime += datetime.timedelta(days=1)
 
-    # TODO: Save info about your batch to a file
     # check if folder exist, create if it doesn't
     if not os.path.exists("batches"):
         os.mkdir("batches")
 
-    random.shuffle(batches)
     batches = pd.DataFrame(
         {"batch": batches, "update_time": update_time})
     batches.to_csv(f"batches/batch_{i}.csv", index=False)
 
-# %%
