@@ -20,17 +20,17 @@ from batchers import create_batches
 # %%
 
 datafile = "db_large.csv"
-datafile = "db.csv"
+# datafile = "db.csv"
 product_frequency = pd.read_csv(datafile)
 num_days = 7
 
 # for small db
-DAILY_BATCHES = 6
-MAX_BATCH_SIZE = 2
+# DAILY_BATCHES = 6
+# MAX_BATCH_SIZE = 2
 
 # for large db
-# DAILY_BATCHES = 40
-# MAX_BATCH_SIZE = 6
+DAILY_BATCHES = 40
+MAX_BATCH_SIZE = 6
 
 # %%
 curr_datetime = datetime.datetime.now()
